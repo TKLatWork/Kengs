@@ -7,15 +7,15 @@
       <view class="input-form">
         <view class="input-box">
           <view class="input-label">计时长度</view>
-          <input class="input-content" bindinput="setConfigNumVal" data-target="totalTime" type="number" value="{{config.totalTime}}" />
+          <input class="input-content" bindblur="setConfigNumVal" data-target="totalTime" type="number" value="{{config.totalTime}}" />
           <view class="input-label">提示间隔</view>
-          <input class="input-content" bindinput="setConfigNumVal" data-target="notifyPeriod" type="number" value="{{config.notifyPeriod}}"/>
+          <input class="input-content" bindblur="setConfigNumVal" data-target="notifyPeriod" type="number" value="{{config.notifyPeriod}}"/>
         </view>
         <view class="input-box">
           <view class="input-label">准备时间</view>
-          <input class="input-content" bindinput="setConfigNumVal" data-target="standByTime" type="number" value="{{config.standByTime}}"/>
+          <input class="input-content" bindblur="setConfigNumVal" data-target="standByTime" type="number" value="{{config.standByTime}}"/>
           <view class="input-label">轮数</view>
-          <input class="input-content" bindinput="setConfigNumVal" data-target="roundNum" type="number" value="{{config.roundNum}}"/>
+          <input class="input-content" bindblur="setConfigNumVal" data-target="roundNum" type="number" value="{{config.roundNum}}"/>
         </view>
       </view>
 

@@ -3,6 +3,7 @@
 var app = getApp();
 var plugin = requirePlugin("WechatSI");
 var timer = require('../../service/TimerService.js')
+var reader = require('../../service/ReadService.js')
 
 Page({
 
@@ -59,66 +60,46 @@ Page({
     this.setData({ config: config });
   },
 
+  toValidVal: function(val){
+    var valInt = Number.parseInt(val.trim());
+    if (Number.isNaN(valInt) || valInt < 0) {
+      valInt = 0;
+    }
+    return valInt;
+  },
+
   setConfigNumVal: function(e){
-    var self = this;
+    if (this.data.vm.running) {
+      console.log("Can't change", valInt);
+      return;
+    }
+    
     var val = e.detail.value;
     var target = e.target.dataset.target;
+    var config = this.data.config;
     console.log("set:" + target, val);
     //format check
-    if (val.trim() == ''){
-      val = "0";
-    }
-    var valInt = Number.parseInt(val.trim()); 
-
-    if (self.data.vm.running || Number.isNaN(valInt) || valInt < 0){
-      console.log("Can't change", valInt);
-      self.setData({ config: self.data.config });
-      return;
-    }else{
-      console.log("Val", valInt);
-    }
+    var valInt = this.toValidVal(val); 
 
     //set
     switch(target){
-      case 'totalTime': self.data.config.totalTime = valInt; break;
-      case 'notifyPeriod': self.data.config.notifyPeriod = valInt; break;
-      case 'standByTime': self.data.config.standByTime = valInt; break;
-      case 'roundNum': self.data.config.roundNum = valInt; break;
+      case 'totalTime': config.totalTime = valInt; break;
+      case 'notifyPeriod': config.notifyPeriod = valInt; break;
+      case 'standByTime': config.standByTime = valInt; break;
+      case 'roundNum': config.roundNum = valInt; break;
     }
-    self.setData({ config: self.data.config});
+    this.setData({ config: config});
   },
 
   readText: function(text){
-    var self = this;
-    plugin.textToSpeech({
-      lang: "zh_CN",
-      tts: true,
-      content: text,
-      success: function (res) {
-        console.log("succ tts", res.filename)
-        self.playAudio(res.filename);
-      },
-      fail: function (res) {
-        console.log("fail tts", res)
-      }
-    })
+    reader.readText(plugin, this.playAudio, text);
   },
 
   playAudio: function(src){
     var bam = wx.getBackgroundAudioManager();
     bam.title = 'Timer';
     bam.src = src;
-    
-    // const innerAudioContext = wx.createInnerAudioContext()
-    // innerAudioContext.autoplay = true
-    // innerAudioContext.src = src
-    // innerAudioContext.onPlay(() => {
-    //   console.log('开始播放')
-    // })
-    // innerAudioContext.onError((res) => {
-    //   console.log(res.errMsg)
-    //   console.log(res.errCode)
-    // })
+    return bam;
   },
 
   /**
