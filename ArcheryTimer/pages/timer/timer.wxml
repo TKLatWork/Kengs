@@ -1,0 +1,29 @@
+<!--pages/timer/timer.wxml-->
+<text class="roundText">{{vm.round}}/{{config.roundNum}}</text>
+<text class="timeText">{{vm.time}}</text>
+
+<view class="page-section">
+      
+      <view class="input-form">
+        <view class="input-box">
+          <view class="input-label">计时长度</view>
+          <input class="input-content" bindinput="setConfigNumVal" data-target="totalTime" type="number" value="{{config.totalTime}}" />
+          <view class="input-label">提示间隔</view>
+          <input class="input-content" bindinput="setConfigNumVal" data-target="notifyPeriod" type="number" value="{{config.notifyPeriod}}"/>
+        </view>
+        <view class="input-box">
+          <view class="input-label">准备时间</view>
+          <input class="input-content" bindinput="setConfigNumVal" data-target="standByTime" type="number" value="{{config.standByTime}}"/>
+          <view class="input-label">轮数</view>
+          <input class="input-content" bindinput="setConfigNumVal" data-target="roundNum" type="number" value="{{config.roundNum}}"/>
+        </view>
+      </view>
+
+      <view class="btn-row">
+        <button class="btn-row-item" type="info" bindtap="setConfigTrain">25s/1/6R 配置</button>
+        <button class="btn-row-item" type="info" bindtap="setConfigMatch">40s/6/1R 配置</button>
+      </view>
+
+      <button class="btn" type="warn" hidden="{{vm.notRunning}}" bindtap="stop">停止</button>
+      <button class="btn" type="primary" hidden="{{vm.running}}" bindtap="start">开始</button>
+</view>

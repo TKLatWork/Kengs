@@ -1,0 +1,56 @@
+/* pages/timer/timer.wxss */
+
+.roundText {
+  display: block;
+  text-align: center;
+  font-size: 4em;
+}
+
+.timeText {
+  display: block;
+  text-align: center;
+  font-size: 12em;
+}
+
+.input-form{
+  margin-top: 30px;
+}
+
+.input-box {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.input-label {
+  display: inline-block;
+  font-size: 1.5em;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 4em;
+  vertical-align: top;
+}
+
+.input-content {
+  display: inline-block;
+  width: 3em;
+  height: 1.5em;
+  font-size: 1.5em;
+  text-align: center;
+  background-color: lavender;
+  border: black solid 1px;
+}
+
+.btn {
+  line-height: 3em;
+}
+
+.btn-row {
+  padding: 5px;
+  text-align: center;
+}
+
+.btn-row-item{
+  display: inline-block;
+  padding: 5px;
+  line-height: 3em;
+}
