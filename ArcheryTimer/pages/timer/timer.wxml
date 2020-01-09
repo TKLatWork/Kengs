@@ -20,7 +20,7 @@
       </view>
 
       <view class="btn-row">
-        <button class="btn-row-item" type="info" bindtap="setConfigTrain">25s/1/6R 配置</button>
+        <button class="btn-row-item" type="info" bindtap="setConfigTrain">20s/1/9R 配置</button>
         <button class="btn-row-item" type="info" bindtap="setConfigMatch">40s/6/1R 配置</button>
       </view>
 

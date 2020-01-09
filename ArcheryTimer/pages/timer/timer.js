@@ -43,7 +43,7 @@ Page({
   },
 
   setConfigTrain: function(){
-    this.setConfigAll(20, 5, 5, 6);
+    this.setConfigAll(20, 5, 10, 9);
   },
 
   setConfigMatch: function () {
